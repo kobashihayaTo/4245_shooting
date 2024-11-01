@@ -5,12 +5,16 @@ using UnityEngine;
 public class Player_ally : MonoBehaviour
 {
 
-    public float attackRange = 3f;
+    public float attackRange = 0.0f;
+
+    //[SerializeField]
+    //private CircleCollider2D circleCollider2D;
 
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<CircleCollider2D>().radius = attackRange;
+        //circleCollider2D.radius = attackRange;
+        GetComponent<SphereCollider>().radius = attackRange;
     }
 
     // Update is called once per frame
@@ -31,4 +35,13 @@ public class Player_ally : MonoBehaviour
             Debug.Log("”ÍˆÍ‚É“ü‚è‚Ü‚µ‚½");
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Debug.Log("”ÍˆÍ‚©‚ço‚Ü‚µ‚½");
+        }
+    }
+
 }
