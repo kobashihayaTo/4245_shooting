@@ -11,8 +11,6 @@ public class Player_ally : MonoBehaviour
     public GameObject canonball;
     private int count = 0;
 
-    private int flag = 0;
-
     //[SerializeField]
     //private CircleCollider2D circleCollider2D;
 
@@ -43,6 +41,7 @@ public class Player_ally : MonoBehaviour
             transform.LookAt(Enemy);
             count++;
             
+            //‚±‚±‚Å”š‚ğ•Ï‚¦‚Ä’e‚Ì‘Å‚ÂŠ´Šo‚Ì•ÏX
             if (count % 10 == 0)
             {
                 Instantiate(canonball, transform.position, Quaternion.identity);
@@ -56,7 +55,6 @@ public class Player_ally : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            flag = 0;
             Debug.Log("”ÍˆÍ‚©‚ço‚Ü‚µ‚½");
         }
     }
