@@ -109,3 +109,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 1
+  Enemy: {fileID: 0}
+  canonball: {fileID: 0}

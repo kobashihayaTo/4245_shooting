@@ -7,6 +7,12 @@ public class Player_ally : MonoBehaviour
 
     public float attackRange = 0.0f;
 
+    public Transform Enemy;
+    public GameObject canonball;
+    private int count = 0;
+
+    private int flag = 0;
+
     //[SerializeField]
     //private CircleCollider2D circleCollider2D;
 
@@ -15,12 +21,13 @@ public class Player_ally : MonoBehaviour
     {
         //circleCollider2D.radius = attackRange;
         GetComponent<SphereCollider>().radius = attackRange;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnDrawGizmos()
@@ -28,11 +35,20 @@ public class Player_ally : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if(other.CompareTag("Enemy"))
         {
-            Debug.Log("îÕàÕÇ…ì¸ÇËÇ‹ÇµÇΩ");
+           
+            transform.LookAt(Enemy);
+            count++;
+            
+            if (count % 10 == 0)
+            {
+                Instantiate(canonball, transform.position, Quaternion.identity);
+                Debug.Log("îÕàÕÇ…ì¸ÇËÇ‹ÇµÇΩ");
+            }
+
         }
     }
 
@@ -40,6 +56,7 @@ public class Player_ally : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            flag = 0;
             Debug.Log("îÕàÕÇ©ÇÁèoÇ‹ÇµÇΩ");
         }
     }
