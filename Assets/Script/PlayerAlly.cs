@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_ally : MonoBehaviour
+public class PlayerAlly : MonoBehaviour
 {
 
     public float attackRange = 0.0f;
