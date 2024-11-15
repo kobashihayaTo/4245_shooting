@@ -5,14 +5,14 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class Player : MonoBehaviour
 {
-    private Rigidbody rb;
+    private Rigidbody RB;
 
     public float mS = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        RB = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -25,12 +25,12 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.A)||Input.GetKey(KeyCode.LeftArrow))
         {
-            rb.velocity = -transform.right * mS;
+            RB.velocity = -transform.right * mS;
         }
 
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            rb.velocity = transform.right * mS;
+            RB.velocity = transform.right * mS;
         }
     }
 }
