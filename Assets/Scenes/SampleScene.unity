@@ -1765,6 +1765,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3361309236940419213, guid: 536de8ba88594854d8483e360f99b885, type: 3}
   m_PrefabInstance: {fileID: 3361309236691894413}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &257551203 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3361309236940419209, guid: 536de8ba88594854d8483e360f99b885, type: 3}
+  m_PrefabInstance: {fileID: 3361309236691894413}
+  m_PrefabAsset: {fileID: 0}
 --- !u!54 &257551204
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3761,6 +3766,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 9
   y: 0
+--- !u!1 &839783879 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2732077704493537578, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
+  m_PrefabInstance: {fileID: 2732077704427923890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &839783886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839783879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d93c5c44b37d8444a080fa1c750b89f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mS: 1
 --- !u!1 &839871445
 GameObject:
   m_ObjectHideFlags: 0
@@ -4598,7 +4621,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d232ba0b66ff64085b86636dd6bb30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Camera: {fileID: 0}
 --- !u!1001 &977791277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10828,8 +10850,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2732077704493537583, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 257551203}
+    - target: {fileID: 2732077704493537583, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
