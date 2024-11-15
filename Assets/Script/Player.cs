@@ -5,32 +5,29 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class Player : MonoBehaviour
 {
-    private Rigidbody RB;
-
-    public float mS = 0f;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        RB = GetComponent<Rigidbody>();
+        rb = gameObject.GetComponent<Rigidbody>();  // rigidbodyÇéÊìæ 
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
-    }
+        rb.velocity = Vector3.zero;
 
-    private void Move()
-    {
-        if(Input.GetKey(KeyCode.A)||Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
-            RB.velocity = -transform.right * mS;
+            rb.velocity = new Vector3(-10.0f, 0.0f, 0.0f); // ílÇê›íË
+                                                           //transform.position -= speed * transform.right * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        {
+            rb.velocity = new Vector3(10.0f, 0.0f, 0.0f); // ílÇê›íË
+                                                          //transform.position += speed * transform.right * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            RB.velocity = transform.right * mS;
-        }
     }
 }

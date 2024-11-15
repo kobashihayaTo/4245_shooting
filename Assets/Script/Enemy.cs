@@ -6,37 +6,61 @@ public class Enemy : MonoBehaviour
 {
     private Rigidbody rb;
 
+    public Transform player;  // 自機のTransform
+    public float acceleration = 3f;  // 加速度
+    public float maxSpeed = 8f;  // 最大速度
+    public float followDistance = 5f;  // 追尾開始する距離
+
+    private Vector3 velocity = Vector3.zero;  // 敵の現在の速度
+    private Vector3 previousPlayerPosition;  // 自機の前回の位置
+    private Vector3 moveDirection;  // 追尾方向
+    private float distanceTraveled;  // 自機の移動量
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();  // rigidbodyを取得 
+        rb.velocity = velocity;
+
+        if (player == null)
+        {
+            Debug.LogError("Player transform not assigned!");
+        }
+        previousPlayerPosition = player.position;
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = Vector3.zero;
+        // 自機の移動量を計算
+        distanceTraveled = Vector3.Distance(player.position, previousPlayerPosition);
 
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+        // 自機の移動後、敵が追尾開始する
+        if (Vector3.Distance(transform.position, player.position) < followDistance)
         {
-            rb.velocity = new Vector3(0.0f, 0.0f, 10.0f); // 値を設定
-                                                          //transform.position += speed * transform.forward * Time.deltaTime;
+            Debug.Log("追尾してます");
+            // 敵が自機を追尾する方向を計算
+            moveDirection = (player.position - transform.position).normalized;
+
+            // 追尾方向に基づいて加速を加える
+            velocity += moveDirection * acceleration * Time.deltaTime;
+
+            // 最大速度に制限
+            velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
         }
-        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+        else
         {
-            rb.velocity = new Vector3(0.0f, 0.0f, -10.0f); // 値を設定
-                                                           //transform.position -= speed * transform.forward * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-        {
-            rb.velocity = new Vector3(-10.0f, 0.0f, 0.0f); // 値を設定
-                                                           //transform.position -= speed * transform.right * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-        {
-            rb.velocity = new Vector3(10.0f, 0.0f, 0.0f); // 値を設定
-                                                          //transform.position += speed * transform.right * Time.deltaTime;
+            // 自機が遠くにいる場合は減速
+            velocity = Vector3.Lerp(velocity, Vector3.zero, Time.deltaTime * acceleration);
         }
 
+        // 敵を移動
+        transform.position += velocity * Time.deltaTime;
+
+        // 自機の位置を更新
+        previousPlayerPosition = player.position;
     }
 }
