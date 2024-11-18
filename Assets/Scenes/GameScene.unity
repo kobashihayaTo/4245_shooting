@@ -4662,6 +4662,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3468150218776037780, guid: c63d3c975cbd3b94fb098d4c894607de, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7882609025202810679, guid: c63d3c975cbd3b94fb098d4c894607de, type: 3}
       propertyPath: canonball
       value: 
@@ -7102,6 +7106,10 @@ PrefabInstance:
     - target: {fileID: 1710328349787116247, guid: c63d3c975cbd3b94fb098d4c894607de, type: 3}
       propertyPath: m_Name
       value: Player_ally
+      objectReference: {fileID: 0}
+    - target: {fileID: 3468150218776037780, guid: c63d3c975cbd3b94fb098d4c894607de, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4240083885112215312, guid: c63d3c975cbd3b94fb098d4c894607de, type: 3}
       propertyPath: m_IsTrigger

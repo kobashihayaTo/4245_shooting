@@ -7,6 +7,8 @@ TagManager:
   - Tile
   - Enemy
   - Player_ally
+  - PlayerBullet
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
