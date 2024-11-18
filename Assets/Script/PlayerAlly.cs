@@ -11,8 +11,10 @@ public class PlayerAlly : MonoBehaviour
     public GameObject canonball;
     private int count = 0;
 
-    //[SerializeField]
-    //private CircleCollider2D circleCollider2D;
+    //体力
+    [SerializeField]
+    private float hp = 5;  //体力
+
 
     // Start is called before the first frame update
     void Start()
@@ -59,4 +61,20 @@ public class PlayerAlly : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider collision)
+    {
+
+        //タグがEnemyBulletのオブジェクトが当たった時に{}内の処理が行われる
+        if (collision.gameObject.tag == "EnemyBullet")
+        {
+            Debug.Log("hit Player");  //コンソールにhit Playerが表示
+            hp -= 1;
+        }
+
+        //体力が0以下になった時{}内の処理が行われる
+        if (hp <= 0)
+        {
+            Destroy(gameObject);  //ゲームオブジェクトが破壊される
+        }
+    }
 }

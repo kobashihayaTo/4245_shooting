@@ -77,8 +77,6 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "PlayerBullet")
         {
             Debug.Log("hit Player");  //コンソールにhit Playerが表示
-            //gameObject.GetComponent<EnemyBulletManager>()でEnemyBulletManagerスクリプトを参照し
-            //.powerEnemy; でEnemyBulletManagerのpowerEnemyの値をゲット
             hp -= 1;
         }
 
