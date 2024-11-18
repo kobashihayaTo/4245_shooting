@@ -18,7 +18,7 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         
-        transform.Translate(0, 0, 0.01f);
-        Destroy(gameObject, 1);
+        transform.Translate(0, 0, 0.02f);
+        Destroy(gameObject, 3);
     }
 }
