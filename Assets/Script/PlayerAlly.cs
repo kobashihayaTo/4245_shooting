@@ -45,7 +45,7 @@ public class PlayerAlly : MonoBehaviour
             if (count % 10 == 0)
             {
                 Instantiate(canonball, transform.position, Quaternion.identity);
-                Debug.Log("”ÍˆÍ‚É“ü‚è‚Ü‚µ‚½");
+                //Debug.Log("”ÍˆÍ‚É“ü‚è‚Ü‚µ‚½");
             }
 
         }
@@ -55,7 +55,7 @@ public class PlayerAlly : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("”ÍˆÍ‚©‚ço‚Ü‚µ‚½");
+            //Debug.Log("”ÍˆÍ‚©‚ço‚Ü‚µ‚½");
         }
     }
 

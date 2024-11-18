@@ -2,21 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour
+public class EnemyAttack : MonoBehaviour
 {
-    private GameObject enemy;
+    private GameObject Player_ally;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        enemy = GameObject.Find("Enemy");
-        transform.LookAt(enemy.transform);
+        Player_ally = GameObject.Find("Player_ally");
+        transform.LookAt(Player_ally.transform);
     }
 
     // Update is called once per frame
     void Update()
     {
+
         transform.Translate(0, 0, 0.02f);
         Destroy(gameObject, 3);
     }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7882609025202810679}
   m_Layer: 0
   m_Name: Player_ally
-  m_TagString: Untagged
+  m_TagString: Player_ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,4 +110,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 1
   Enemy: {fileID: 2732077704493537582, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
-  canonball: {fileID: 0}
+  canonball: {fileID: 3220862640229770038, guid: e86ad363fa1621f4b8599da62590611f, type: 3}
