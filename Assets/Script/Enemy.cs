@@ -14,9 +14,9 @@ public class Enemy : MonoBehaviour
     public Transform Player_ally;
     public GameObject canonball;
     private int count = 0;
-
-    private int flag = 0;
-
+    //体力
+    [SerializeField]
+    private float hp = 5;  //体力
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +67,25 @@ public class Enemy : MonoBehaviour
                 //Debug.Log("範囲に入りました");
             }
 
+        }
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+
+        //タグがEnemyBulletのオブジェクトが当たった時に{}内の処理が行われる
+        if (collision.gameObject.tag == "PlayerBullet")
+        {
+            Debug.Log("hit Player");  //コンソールにhit Playerが表示
+            //gameObject.GetComponent<EnemyBulletManager>()でEnemyBulletManagerスクリプトを参照し
+            //.powerEnemy; でEnemyBulletManagerのpowerEnemyの値をゲット
+            hp -= 1;
+        }
+
+        //体力が0以下になった時{}内の処理が行われる
+        if (hp <= 0)
+        {
+            Destroy(gameObject);  //ゲームオブジェクトが破壊される
         }
     }
 }
