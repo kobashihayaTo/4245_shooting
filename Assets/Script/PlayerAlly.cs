@@ -57,7 +57,7 @@ public class PlayerAlly : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            //Debug.Log("”ÍˆÍ‚©‚ço‚Ü‚µ‚½");
+            Debug.Log("”ÍˆÍ‚©‚ço‚Ü‚µ‚½");
         }
     }
 

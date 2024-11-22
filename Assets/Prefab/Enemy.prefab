@@ -128,5 +128,6 @@ MonoBehaviour:
   moveHorizontal: 0
   moveVertical: 0
   attackRange: 0
-  Player_ally: {fileID: 0}
+  Player_ally: {fileID: 1710328349787116247, guid: c63d3c975cbd3b94fb098d4c894607de, type: 3}
   canonball: {fileID: 0}
+  hp: 5

@@ -10,8 +10,8 @@ public class EnemyAttack : MonoBehaviour
     void Start()
     {
 
-        Player_ally = GameObject.Find("Player_ally");
-        transform.LookAt(Player_ally.transform);
+        //Player_ally = GameObject.FindGameObjectWithTag("Player_ally");
+        //transform.LookAt(Player_ally.transform);
     }
 
     // Update is called once per frame
@@ -19,6 +19,6 @@ public class EnemyAttack : MonoBehaviour
     {
 
         transform.Translate(0, 0, 0.02f);
-        Destroy(gameObject, 3);
+        Destroy(gameObject, 1.5f);
     }
 }
