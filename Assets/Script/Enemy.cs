@@ -15,13 +15,19 @@ public class Enemy : MonoBehaviour
 
     //一番近いオブジェクト
     private GameObject nearObj;
+    private GameObject playerObj;
     public GameObject canonball;
     private int count = 0;
+    //
+    Transform playerTr; // プレイヤーのTransform
+
     //体力
     [SerializeField]
     private float hp = 5;  //体力
 
     private bool flag = false;
+
+    //public float meter = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -29,13 +35,17 @@ public class Enemy : MonoBehaviour
         RB = GetComponent<Rigidbody>();
         GetComponent<SphereCollider>().radius = attackRange;
 
+        // プレイヤーのTransformを取得（プレイヤーのタグをPlayerに設定必要）
+        playerTr = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //// プレイヤーとの距離が0.1f未満になったらそれ以上実行しない
+        //if (Vector3.Distance(transform.position, playerTr.position) < 0.1f)
+        //    return;
         Move();
-        
     }
     private void Move()
     {
@@ -43,14 +53,24 @@ public class Enemy : MonoBehaviour
         RB.velocity = transform.forward * moveVertical;
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            RB.velocity = -transform.right * moveHorizontal;
+            RB.velocity = transform.right * moveHorizontal;
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            RB.velocity = transform.right * moveHorizontal;
+            RB.velocity = -transform.right * moveHorizontal;
+        }
+        if (flag == false)
+        {
+            //// プレイヤーに向けて進む
+            //transform.position = Vector3.MoveTowards(
+            //    transform.position,
+            //    new Vector3(playerTr.position.x, playerTr.position.z),
+            //    moveVertical * Time.deltaTime);
+            playerObj = SerchTag(gameObject, "Player");
+
+            transform.LookAt(playerObj.transform);
         }
 
-        
     }
 
     private void OnDrawGizmos()
@@ -62,6 +82,7 @@ public class Enemy : MonoBehaviour
     {
         if(other.CompareTag("Player_ally"))
         {
+            flag = true;
             //近くのplayer_allyの方向を取得し続ける
             nearObj = SerchTag(gameObject, "Player_ally");
             //一番近くのplayer_allyの方向を向く
@@ -103,6 +124,8 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        flag= false;
+
         Debug.Log("範囲から出ました");
         // transformを取得
         Transform myTransform = this.transform;
