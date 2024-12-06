@@ -27,6 +27,8 @@ public class Enemy : MonoBehaviour
 
     private bool flag = false;
 
+    [SerializeField] private SceneSwitter sceneSwitter;
+
     //public float meter = 0f;
 
     // Start is called before the first frame update
@@ -49,26 +51,29 @@ public class Enemy : MonoBehaviour
     }
     private void Move()
     {
-        //自動で迫ってくる
-        RB.velocity = transform.forward * moveVertical;
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if (sceneSwitter.GetterIsMode() == true)
         {
-            RB.velocity = transform.right * moveHorizontal;
-        }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            RB.velocity = -transform.right * moveHorizontal;
-        }
-        if (flag == false)
-        {
-            //// プレイヤーに向けて進む
-            //transform.position = Vector3.MoveTowards(
-            //    transform.position,
-            //    new Vector3(playerTr.position.x, playerTr.position.z),
-            //    moveVertical * Time.deltaTime);
-            playerObj = SerchTag(gameObject, "Player");
+            //自動で迫ってくる
+            RB.velocity = transform.forward * moveVertical;
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            {
+                RB.velocity = transform.right * moveHorizontal;
+            }
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            {
+                RB.velocity = -transform.right * moveHorizontal;
+            }
+            if (flag == false)
+            {
+                //// プレイヤーに向けて進む
+                //transform.position = Vector3.MoveTowards(
+                //    transform.position,
+                //    new Vector3(playerTr.position.x, playerTr.position.z),
+                //    moveVertical * Time.deltaTime);
+                playerObj = SerchTag(gameObject, "Player");
 
-            transform.LookAt(playerObj.transform);
+                transform.LookAt(playerObj.transform);
+            }
         }
 
     }
