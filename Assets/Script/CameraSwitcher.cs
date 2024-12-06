@@ -13,7 +13,7 @@ public class CameraSwitcher : MonoBehaviour
     private void Start()
     {
         //ゲーム開始時のサブカメラをオフにする
-        subCamera.gameObject.SetActive(false);
+        mainCamera.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -23,11 +23,15 @@ public class CameraSwitcher : MonoBehaviour
         if (sceneSwitter.GetterIsMode() == true)
         {
             //メインカメラとサブカメラを切り替える
-            mainCamera.gameObject.SetActive(!mainCamera.gameObject.activeSelf);
+            //mainCamera.gameObject.SetActive(!mainCamera.gameObject.activeSelf);
+            mainCamera.gameObject.SetActive(true);
+            subCamera.gameObject.SetActive(false);
         }
         else if (sceneSwitter.GetterIsMode() == false)
         {
-            subCamera.gameObject.SetActive(!subCamera.gameObject.activeSelf);
+            //subCamera.gameObject.SetActive(!subCamera.gameObject.activeSelf);
+            subCamera.gameObject.SetActive(true);
+            mainCamera.gameObject.SetActive(false);
         }
     }
 }
