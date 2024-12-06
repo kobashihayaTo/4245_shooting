@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour
         if (hp <= 0)
         {
             Destroy(gameObject);  //ゲームオブジェクトが破壊される
-            //SceneManager.LoadScene("GameClear");  // ゲームクリア画面に移行する
+            SceneManager.LoadScene("GameClear");  // ゲームクリア画面に移行する
         }
 
     }
