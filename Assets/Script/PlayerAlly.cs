@@ -11,18 +11,10 @@ public class PlayerAlly : MonoBehaviour
     public GameObject canonball;
     private int count = 0;
 
-<<<<<<< Updated upstream:Assets/Script/PlayerAlly.cs
     //体力
     [SerializeField]
     private float hp = 5;  //体力
 
-=======
-    private GameObject CurrentPlacingTower;
-    [SerializeField] private Camera PlayerCamera;
-
-    //[SerializeField]
-    //private CircleCollider2D circleCollider2D;
->>>>>>> Stashed changes:Assets/Script/Player_ally.cs
 
     // Start is called before the first frame update
     void Start()
@@ -35,29 +27,6 @@ public class PlayerAlly : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CurrentPlacingTower != null)
-        {
-            Ray camray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit HitInfo;
-            if (Physics.Raycast(camray, out HitInfo, 100f, PlacementCollideMask))
-            {
-                CurrentPlacingTower.transform.position = HitInfo.point;
-            }
-
-            if (Input.GetMouseButtonDown(0) && HitInfo.collider.gameObject != null)
-            {
-                BoxCollider TowerCollider = CurrentPlacingTower.gameObject.GetComponent<BoxCollider>();
-                TowerCollider.isTrigger = true;
-
-                Vector3 BoxCenter = CurrentPlacingTower.gameObject.transform.position + TowerCollider.center;
-                Vector3 HalfExtents = TowerCollider.size / 2;
-                if (!Physics.CheckBox(BoxCenter, HalfExtents, Quaternion.identity, PlacementCheckMask, QueryTriggerInteraction.Ignore))
-                {
-                    TowerCollider.isTrigger = false;
-                    CurrentPlacingTower = null;
-                }
-            }
-        }
 
     }
 
@@ -92,7 +61,6 @@ public class PlayerAlly : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream:Assets/Script/PlayerAlly.cs
     private void OnTriggerEnter(Collider collision)
     {
 
@@ -109,11 +77,4 @@ public class PlayerAlly : MonoBehaviour
             Destroy(gameObject);  //ゲームオブジェクトが破壊される
         }
     }
-=======
-    public void SetTowerPlace(GameObject tower)
-    {
-        CurrentPlactingTower = Instantiate(tower, Vector3.zero, Quaternion.identity);
-    }
-
->>>>>>> Stashed changes:Assets/Script/Player_ally.cs
 }
