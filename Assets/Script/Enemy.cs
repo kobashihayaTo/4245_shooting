@@ -26,10 +26,11 @@ public class Enemy : MonoBehaviour
     private float hp = 5;  //体力
 
     private bool flag = false;
-
+    //
     [SerializeField] private SceneSwitter sceneSwitter;
 
-    //public float meter = 0f;
+    //移動の範囲するために必要
+    [SerializeField] private Transform enemy_pos;
 
     // Start is called before the first frame update
     void Start()
@@ -55,14 +56,21 @@ public class Enemy : MonoBehaviour
         {
             //自動で迫ってくる
             RB.velocity = transform.forward * moveVertical;
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            if (enemy_pos.position.x >= -4.0f)
             {
-                RB.velocity = transform.right * moveHorizontal;
+                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+                {
+                    RB.velocity = transform.right * moveHorizontal;
+                }
             }
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            if (enemy_pos.position.x <= 4.0f)
             {
-                RB.velocity = -transform.right * moveHorizontal;
+                if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+                {
+                    RB.velocity = -transform.right * moveHorizontal;
+                }
             }
+              
             if (flag == false)
             {
                 //// プレイヤーに向けて進む
