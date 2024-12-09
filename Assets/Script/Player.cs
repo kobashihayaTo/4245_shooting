@@ -26,7 +26,6 @@ public class Player : MonoBehaviour
 
         if (player_pos.position.x >= -4.0f)
         {
-
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
                 rb.velocity = new Vector3(-10.0f, 0.0f, 0.0f); // 蛟､繧定ｨｭ螳・
@@ -43,6 +42,7 @@ public class Player : MonoBehaviour
             }
             //rb.velocity.x = 3.0f;
         }
+        Debug.Log("velo:" + player_pos.position.x);
 
         // アニメーション用フラグ管理
         if (scene.IsMode == true)
@@ -53,9 +53,6 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("IsActive", false);
         }
-
-        Debug.Log("velo:" + player_pos.position.x);
-
     }
 
     private void OnTriggerEnter(Collider collision)
