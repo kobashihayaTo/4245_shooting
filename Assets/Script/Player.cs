@@ -6,11 +6,14 @@ using UnityEngine.Scripting.APIUpdating;
 public class Player : MonoBehaviour
 {
     private Rigidbody rb;
+    private Animator animator = null;
+    [SerializeField] private SceneSwitter scene;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();  // rigidbodyを取得 
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,6 +30,16 @@ public class Player : MonoBehaviour
         {
             rb.velocity = new Vector3(10.0f, 0.0f, 0.0f); // 値を設定
                                                           //transform.position += speed * transform.right * Time.deltaTime;
+        }
+
+        // アニメーション用のフラグ管理
+        if (scene.IsMode == true)
+        {
+            animator.SetBool("IsActive", true);
+        }
+        else
+        {
+            animator.SetBool("IsActive", false);
         }
 
     }
