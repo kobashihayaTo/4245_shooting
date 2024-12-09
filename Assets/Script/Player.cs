@@ -29,6 +29,9 @@ public class Player : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
                 rb.velocity = new Vector3(-10.0f, 0.0f, 0.0f); // 値を設宁E
+
+                Debug.Log("���@�����͂��Ă�");
+                rb.velocity = new Vector3(-10.0f, 0.0f, 0.0f); // 
                                                                //transform.position -= speed * transform.right * Time.deltaTime;
             }
         }
@@ -38,6 +41,9 @@ public class Player : MonoBehaviour
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
                 rb.velocity = new Vector3(10.0f, 0.0f, 0.0f); // 値を設宁E
+
+                Debug.Log("�E�@�����͂��Ă�");
+                rb.velocity = new Vector3(10.0f, 0.0f, 0.0f); // 
                                                               //transform.position += speed * transform.right * Time.deltaTime;
             }
             //rb.velocity.x = 3.0f;
@@ -54,6 +60,11 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("IsActive", false);
         }
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
     }
 
     private void OnTriggerEnter(Collider collision)
