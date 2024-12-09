@@ -10,14 +10,12 @@ public class Player : MonoBehaviour
 
     private Animator animator = null;
     [SerializeField] private SceneSwitter scene;
-
-    [SerializeField]
-    private Transform player_pos;
+    [SerializeField] private Transform player_pos;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody>();  // rigidbody繧貞叙蠕・
+        rb = gameObject.GetComponent<Rigidbody>();  // rigidbodyを取得
         animator = GetComponent<Animator>();
     }
 
@@ -26,16 +24,16 @@ public class Player : MonoBehaviour
     {
         rb.velocity = Vector3.zero;
 
-        if (player_pos.position.x >= -4.0f) 
+        if (player_pos.position.x >= -4.0f)
         {
-           
+
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
                 rb.velocity = new Vector3(-10.0f, 0.0f, 0.0f); // 蛟､繧定ｨｭ螳・
                                                                //transform.position -= speed * transform.right * Time.deltaTime;
             }
         }
-        if(player_pos.position.x <= 4.0f)
+        if (player_pos.position.x <= 4.0f)
         {
 
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
@@ -46,7 +44,7 @@ public class Player : MonoBehaviour
             //rb.velocity.x = 3.0f;
         }
 
-        // 繧｢繝九Γ繝ｼ繧ｷ繝ｧ繝ｳ逕ｨ縺ｮ繝輔Λ繧ｰ邂｡逅・
+        // アニメーション用フラグ管理
         if (scene.IsMode == true)
         {
             animator.SetBool("IsActive", true);
@@ -62,15 +60,11 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-
-        //タグがEnemyBulletのオブジェクトが当たった時に{ }
-        //内の処理が行われる
+        // タグがEnemyBulletのオブジェクトが当たった時に{ }
+        // 内の処理が行われる
         if (collision.gameObject.tag == "Enemy")
         {
             SceneManager.LoadScene("GameOver");  // ゲームクリア画面に移行する
         }
-
-
-
     }
 }
