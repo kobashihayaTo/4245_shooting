@@ -28,9 +28,8 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
-                rb.velocity = new Vector3(-10.0f, 0.0f, 0.0f); // å€¤ã‚’è¨­å®E
 
-                Debug.Log("ï¿½ï¿½ï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½Í‚ï¿½ï¿½Ä‚ï¿½");
+                Debug.Log("¶@”½‰‚Í‚µ‚Ä‚é");
                 rb.velocity = new Vector3(-10.0f, 0.0f, 0.0f); // 
                                                                //transform.position -= speed * transform.right * Time.deltaTime;
             }
@@ -40,9 +39,8 @@ public class Player : MonoBehaviour
 
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
-                rb.velocity = new Vector3(10.0f, 0.0f, 0.0f); // å€¤ã‚’è¨­å®E
 
-                Debug.Log("ï¿½Eï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½Í‚ï¿½ï¿½Ä‚ï¿½");
+                Debug.Log("‰E@”½‰‚Í‚µ‚Ä‚é");
                 rb.velocity = new Vector3(10.0f, 0.0f, 0.0f); // 
                                                               //transform.position += speed * transform.right * Time.deltaTime;
             }
