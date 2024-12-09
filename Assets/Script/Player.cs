@@ -58,11 +58,6 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("IsActive", false);
         }
-<<<<<<< Updated upstream
-=======
-
-
->>>>>>> Stashed changes
     }
 
     private void OnTriggerEnter(Collider collision)
