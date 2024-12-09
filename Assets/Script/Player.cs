@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
             }
             //rb.velocity.x = 3.0f;
         }
+
         Debug.Log("velo:" + player_pos.position.x);
 
         // アニメーション用フラグ管理
