@@ -7,13 +7,18 @@ using UnityEngine.Scripting.APIUpdating;
 public class Player : MonoBehaviour
 {
     private Rigidbody rb;
+
+    private Animator animator = null;
+    [SerializeField] private SceneSwitter scene;
+
     [SerializeField]
     private Transform player_pos;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody>();  // rigidbody‚ğæ“¾ 
+        rb = gameObject.GetComponent<Rigidbody>();  // rigidbodyã‚’å–å¾— 
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -23,24 +28,36 @@ public class Player : MonoBehaviour
 
         if (player_pos.position.x >= -4.0f) 
         {
-            Debug.Log("¶@’Ê‚Á‚Ä‚é");
+            Debug.Log("å·¦ã€€é€šã£ã¦ã‚‹");
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
-                rb.velocity = new Vector3(-10.0f, 0.0f, 0.0f); // ’l‚ğİ’è
+                rb.velocity = new Vector3(-10.0f, 0.0f, 0.0f); // å€¤ã‚’è¨­å®š
                                                                //transform.position -= speed * transform.right * Time.deltaTime;
             }
         }
         if(player_pos.position.x <= 4.0f)
         {
-            Debug.Log("‰E@’Ê‚Á‚Ä‚é");
+            Debug.Log("å³ã€€é€šã£ã¦ã‚‹");
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
-                rb.velocity = new Vector3(10.0f, 0.0f, 0.0f); // ’l‚ğİ’è
+                rb.velocity = new Vector3(10.0f, 0.0f, 0.0f); // å€¤ã‚’è¨­å®š
                                                               //transform.position += speed * transform.right * Time.deltaTime;
             }
             //rb.velocity.x = 3.0f;
         }
+
+        // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ç”¨ã®ãƒ•ãƒ©ã‚°ç®¡ç†
+        if (scene.IsMode == true)
+        {
+            animator.SetBool("IsActive", true);
+        }
+        else
+        {
+            animator.SetBool("IsActive", false);
+        }
+
         Debug.Log("velo:" + player_pos.position.x);
+
     }
 
     private void OnTriggerEnter(Collider collision)
