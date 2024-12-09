@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Scripting.APIUpdating;
 
 public class Player : MonoBehaviour
@@ -19,8 +20,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         rb.velocity = Vector3.zero;
-
-
 
         if (player_pos.position.x >= -4.0f) 
         {
@@ -42,5 +41,19 @@ public class Player : MonoBehaviour
             //rb.velocity.x = 3.0f;
         }
         Debug.Log("velo:" + player_pos.position.x);
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+
+        //タグがEnemyBulletのオブジェクトが当たった時に{ }
+        //内の処理が行われる
+        if (collision.gameObject.tag == "Enemy")
+        {
+            SceneManager.LoadScene("GameOver");  // ゲームクリア画面に移行する
+        }
+
+
+
     }
 }
