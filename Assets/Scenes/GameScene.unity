@@ -4438,6 +4438,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773114708}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &773562890 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1710328349787116247, guid: c63d3c975cbd3b94fb098d4c894607de, type: 3}
+  m_PrefabInstance: {fileID: 977791277}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &790633134
 GameObject:
   m_ObjectHideFlags: 0
@@ -5007,15 +5012,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54dbf2750d92cb44383efb8a218727ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 0}
+  towerPrefab: {fileID: 773562890}
   placementLayer:
     serializedVersion: 2
-    m_Bits: 0
-  gridSize: 1
-  gridWidth: 10
-  gridHeight: 10
-  gridColor: {r: 0, g: 1, b: 0, a: 1}
-  gridOrigin: {x: -4, y: 1, z: -6.63}
+    m_Bits: 1
+  gridSize: 2
+  gridWidth: 4
+  gridHeight: 17
+  gridColor: {r: 0.34536982, g: 1, b: 0, a: 1}
+  gridOrigin: {x: -4, y: 0.1, z: -10}
 --- !u!4 &852945529
 Transform:
   m_ObjectHideFlags: 0
