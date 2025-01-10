@@ -7,6 +7,7 @@ using UnityEngine.Scripting.APIUpdating;
 public class Player : MonoBehaviour
 {
     private Rigidbody rb;
+    public float speed = 3.0f;
 
     private Animator animator = null;
     [SerializeField] private SceneSwitter scene;
@@ -30,8 +31,9 @@ public class Player : MonoBehaviour
             {
 
                 Debug.Log("ç∂Å@îΩâûÇÕÇµÇƒÇÈ");
-                rb.velocity = new Vector3(-10.0f, 0.0f, 0.0f); // 
-                                                               //transform.position -= speed * transform.right * Time.deltaTime;
+                //rb.velocity = new Vector3(-10.0f, 0.0f, 0.0f); 
+                transform.position -= speed * transform.right * Time.deltaTime;
+
             }
         }
         if (player_pos.position.x <= 4.0f)
@@ -41,8 +43,9 @@ public class Player : MonoBehaviour
             {
 
                 Debug.Log("âEÅ@îΩâûÇÕÇµÇƒÇÈ");
-                rb.velocity = new Vector3(10.0f, 0.0f, 0.0f); // 
-                                                              //transform.position += speed * transform.right * Time.deltaTime;
+               //rb.velocity = new Vector3(10.0f, 0.0f, 0.0f); 
+               transform.position += speed * transform.right * Time.deltaTime;
+
             }
             //rb.velocity.x = 3.0f;
         }
