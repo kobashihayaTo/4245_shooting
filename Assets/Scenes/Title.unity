@@ -767,7 +767,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u30D7\u30EC\u30A4\u30E4\u30FC\u3092\u5012\u3059\u3063\u3066\n\u30DE\u30B8\u3063\u3059\u304B\uFF01\uFF1F"
+  m_Text: Invader's
 --- !u!222 &1278914237
 CanvasRenderer:
   m_ObjectHideFlags: 0
