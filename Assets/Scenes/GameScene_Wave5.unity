@@ -11411,7 +11411,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2611639654017836467, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
       propertyPath: hp
-      value: 7
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2611639654017836467, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
+      propertyPath: wave
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2611639654017836467, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
       propertyPath: canonball

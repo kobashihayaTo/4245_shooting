@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     public float moveVertical = 0f;
     //範囲に入ったら
     public float attackRange = 0.0f;
+    //
+    public int wave = 0;
 
     //一番近いオブジェクト
     private GameObject nearObj;
@@ -130,7 +132,40 @@ public class Enemy : MonoBehaviour
         if (hp <= 0)
         {
             Destroy(gameObject);  //ゲームオブジェクトが破壊される
-            SceneManager.LoadScene("GameClear");  // ゲームクリア画面に移行する
+
+            switch(wave)
+            {
+                case 1:
+
+                    SceneManager.LoadScene("GameScene_Wave2");  // wave2シーンに移行する
+
+                break;
+
+                case 2:
+
+                    SceneManager.LoadScene("GameScene_Wave3");  // wave3シーン画面に移行する
+
+                    break;
+
+                case 3:
+
+                    SceneManager.LoadScene("GameScene_Wave4");  // wave4シーン画面に移行する
+
+                    break;
+
+                case 4:
+
+                    SceneManager.LoadScene("GameScene_Wave5");  // wave5シーン画面に移行する
+
+                    break;
+
+                case 5:
+
+                    SceneManager.LoadScene("GameClear");  // ゲームクリア画面に移行する
+
+                    break;
+            }
+            
         }
 
     }
