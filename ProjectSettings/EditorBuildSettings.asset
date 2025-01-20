@@ -9,27 +9,27 @@ EditorBuildSettings:
     path: Assets/Scenes/Title.unity
     guid: c3f40ebdbe3675940b7c5f969f5ca733
   - enabled: 1
-    path: Assets/Scenes/GameScene_Wave3.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/GameOver.unity
-    guid: 9a59b576c4e28e042a5eb4e7bb3dfa9e
-  - enabled: 1
-    path: Assets/Scenes/GameClear.unity
-    guid: e80e4bfd4ce0e224e9a3ddd8b1a7a6a8
-  - enabled: 1
     path: Assets/Scenes/GameManual.unity
     guid: e50d66064ac51484f9ae8e1be44a6817
+  - enabled: 1
+    path: Assets/Scenes/GameScene_Wave1.unity
+    guid: cf71eb21ec557e048b724848bbc6fe8b
   - enabled: 1
     path: Assets/Scenes/GameScene_Wave2.unity
     guid: fb522dba7fbe8944c97b5a776989baee
   - enabled: 1
-    path: Assets/Scenes/GameScene_Wave1.unity
-    guid: cf71eb21ec557e048b724848bbc6fe8b
+    path: Assets/Scenes/GameScene_Wave3.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/GameScene_Wave4.unity
     guid: 18cbc72bd761189439b4f961d07d0f4c
   - enabled: 1
     path: Assets/Scenes/GameScene_Wave5.unity
     guid: 2ff28172056536b42bf332f2db56c1dd
+  - enabled: 1
+    path: Assets/Scenes/GameClear.unity
+    guid: e80e4bfd4ce0e224e9a3ddd8b1a7a6a8
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 9a59b576c4e28e042a5eb4e7bb3dfa9e
   m_configObjects: {}
