@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/GameManual.unity
     guid: e50d66064ac51484f9ae8e1be44a6817
   - enabled: 1
-    path: Assets/Scenes/GameScene_Wave1.unity
+    path: Assets/Scenes/GameScene_Wave2.unity
     guid: cf71eb21ec557e048b724848bbc6fe8b
   - enabled: 1
     path: Assets/Scenes/GameScene_Wave2.unity

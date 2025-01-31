@@ -37,6 +37,7 @@ public class PlayerAlly : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        
         if (other.CompareTag("Enemy"))
         {
 
@@ -63,7 +64,6 @@ public class PlayerAlly : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-
         //タグがEnemyBulletのオブジェクトが当たった時に{}内の処理が行われる
         if (collision.gameObject.tag == "EnemyBullet")
         {
