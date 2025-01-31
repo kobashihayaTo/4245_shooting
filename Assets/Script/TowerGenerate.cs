@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class TowerGenerate : MonoBehaviour
 {
@@ -13,19 +14,17 @@ public class TowerGenerate : MonoBehaviour
     public Color gridColor = Color.green; // グリッド線の色
     public Vector3 gridOrigin = Vector3.zero;
 
+    [SerializeField]
     private Camera mainCamera;
+
     private GameObject previewTower; // 配置前のプレビュータワー
     private bool isGridVisible = true; // グリッド表示の切り替え
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
-
-    // Start is called before the first frame update
     void Start()
     {
         mainCamera = Camera.main;
     }
 
-    // Update is called once per frame
     void Update()
     {
         HandlePlacementPreview();
@@ -33,39 +32,42 @@ public class TowerGenerate : MonoBehaviour
         ToggleGridVisibility();
     }
 
+    // スクリーン座標をワールド座標に変換
+    Vector3 ScreenToWorldPosition(Vector3 screenPosition)
+    {
+        Ray ray = mainCamera.ScreenPointToRay(screenPosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, placementLayer))
+        {
+            return SnapToGrid(hit.point); // ヒットした位置をスナップ処理
+        }
+        return Vector3.zero; // ヒットしなかった場合は無視
+    }
+
     // グリッドスナップ機能
     Vector3 SnapToGrid(Vector3 position)
     {
         float x = Mathf.Round(position.x / gridSize) * gridSize;
-        float z = Mathf.Round(position.z / gridSize) * gridSize; // Y軸を無視してXZ平面で揃える
-        return new Vector3(x, position.y, z);
+        float z = Mathf.Round(position.z / gridSize) * gridSize;
+        float y = 0.5f; // 高さはそのまま（地面の高さを維持）
+        return new Vector3(x, y, z);
     }
 
     void HandlePlacementPreview()
     {
         if (towerPrefab == null) return;
 
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, placementLayer))
-        {
-            Vector3 snappedPosition = SnapToGrid(hit.point);
+        // スクリーン座標をグリッドサイズにスナップする
+        Vector3 worldPosition = ScreenToWorldPosition(Input.mousePosition);
+        if (worldPosition == Vector3.zero) return;
 
-            if (previewTower == null)
-            {
-                previewTower = Instantiate(towerPrefab, snappedPosition, Quaternion.identity);
-                previewTower.GetComponent<Collider>().enabled = false; // プレビュー時はコライダー無効
-            }
-            else
-            {
-                previewTower.transform.position = snappedPosition;
-            }
+        if (previewTower == null)
+        {
+            previewTower = Instantiate(towerPrefab, worldPosition, Quaternion.identity);
+            previewTower.GetComponent<Collider>().enabled = false; // プレビュー時はコライダー無効
         }
         else
         {
-            if (previewTower != null)
-            {
-                Destroy(previewTower);
-            }
+            previewTower.transform.position = worldPosition; // プレビュータワーを位置更新
         }
     }
 
@@ -73,20 +75,18 @@ public class TowerGenerate : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && previewTower != null)
         {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, placementLayer))
-            {
-                Vector3 snappedPosition = SnapToGrid(hit.point);
-                Instantiate(towerPrefab, snappedPosition, Quaternion.identity); // タワーを配置
-                Destroy(previewTower); // プレビューオブジェクトを破棄
-                previewTower = null;
-            }
+            Vector3 worldPosition = ScreenToWorldPosition(Input.mousePosition);
+            if (worldPosition == Vector3.zero) return;
+
+            // タワーを設置
+            Instantiate(towerPrefab, worldPosition, Quaternion.identity);
+            Destroy(previewTower);
+            previewTower = null;
         }
     }
 
     void ToggleGridVisibility()
     {
-        // Gキーでグリッド表示のオン・オフを切り替え
         if (Input.GetKeyDown(KeyCode.G))
         {
             isGridVisible = !isGridVisible;
@@ -98,11 +98,8 @@ public class TowerGenerate : MonoBehaviour
         if (!isGridVisible) return;
 
         Gizmos.color = gridColor;
-
-        // グリッドの開始位置
         Vector3 startPosition = gridOrigin;
 
-        // 横方向の線を描画
         for (int i = 0; i <= gridHeight; i++)
         {
             float zPos = startPosition.z + i * gridSize;
@@ -111,7 +108,6 @@ public class TowerGenerate : MonoBehaviour
             Gizmos.DrawLine(start, end);
         }
 
-        // 縦方向の線を描画
         for (int i = 0; i <= gridWidth; i++)
         {
             float xPos = startPosition.x + i * gridSize;

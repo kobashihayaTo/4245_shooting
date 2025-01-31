@@ -24,14 +24,14 @@ public class CameraSwitcher : MonoBehaviour
         {
             //メインカメラとサブカメラを切り替える
             //mainCamera.gameObject.SetActive(!mainCamera.gameObject.activeSelf);
-            mainCamera.gameObject.SetActive(true);
-            subCamera.gameObject.SetActive(false);
+            mainCamera.gameObject.SetActive(false);
+            subCamera.gameObject.SetActive(true);
         }
         else if (sceneSwitter.GetterIsMode() == false)
         {
             //subCamera.gameObject.SetActive(!subCamera.gameObject.activeSelf);
-            subCamera.gameObject.SetActive(true);
-            mainCamera.gameObject.SetActive(false);
+            subCamera.gameObject.SetActive(false);
+            mainCamera.gameObject.SetActive(true);
         }
     }
 }
