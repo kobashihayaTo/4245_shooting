@@ -10,6 +10,7 @@ public class PlayerAlly : MonoBehaviour
     public Transform Enemy;
     public GameObject canonball;
     private int count = 0;
+    private SceneSwitter sceneSwitter;
 
     //体力
     [SerializeField]
@@ -37,20 +38,22 @@ public class PlayerAlly : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        
-        if (other.CompareTag("Enemy"))
+        if (sceneSwitter.GetterIsMode() == true)
         {
-
-            transform.LookAt(Enemy);
-            count++;
-
-            //ここで数字を変えて弾の打つ感覚の変更
-            if (count % 10 == 0)
+            if (other.CompareTag("Enemy"))
             {
-                Instantiate(canonball, transform.position, Quaternion.identity);
-                //Debug.Log("範囲に入りました");
-            }
 
+                transform.LookAt(Enemy);
+                count++;
+
+                //ここで数字を変えて弾の打つ感覚の変更
+                if (count % 10 == 0)
+                {
+                    Instantiate(canonball, transform.position, Quaternion.identity);
+                    //Debug.Log("範囲に入りました");
+                }
+
+            }
         }
     }
 
@@ -64,17 +67,20 @@ public class PlayerAlly : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        //タグがEnemyBulletのオブジェクトが当たった時に{}内の処理が行われる
-        if (collision.gameObject.tag == "EnemyBullet")
+        if (sceneSwitter.GetterIsMode() == true)
         {
-            Debug.Log("hit Player");  //コンソールにhit Playerが表示
-            hp -= 1;
-        }
+            //タグがEnemyBulletのオブジェクトが当たった時に{}内の処理が行われる
+            if (collision.gameObject.tag == "EnemyBullet")
+            {
+                Debug.Log("hit Player");  //コンソールにhit Playerが表示
+                hp -= 1;
+            }
 
-        //体力が0以下になった時{}内の処理が行われる
-        if (hp <= 0)
-        {
-            Destroy(gameObject);  //ゲームオブジェクトが破壊される
+            //体力が0以下になった時{}内の処理が行われる
+            if (hp <= 0)
+            {
+                Destroy(gameObject);  //ゲームオブジェクトが破壊される
+            }
         }
     }
 }

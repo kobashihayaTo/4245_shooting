@@ -72,7 +72,7 @@ public class Enemy : MonoBehaviour
                     RB.velocity = -transform.right * moveHorizontal;
                 }
             }
-              
+
             if (flag == false)
             {
                 //// プレイヤーに向けて進む
@@ -95,23 +95,26 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("Player_ally"))
+        if (sceneSwitter.IsMode == true)
         {
-            flag = true;
-            //近くのplayer_allyの方向を取得し続ける
-            nearObj = SerchTag(gameObject, "Player_ally");
-            //一番近くのplayer_allyの方向を向く
-            transform.LookAt(nearObj.transform);
-
-            if (SerchTag(gameObject, "Player_ally"))
+            if (other.CompareTag("Player_ally"))
             {
-                Debug.Log("範囲に入りました");
-                count++;
-                //ここで数字を変えて弾の打つ感覚の変更
-                if (count % 10 == 0)
+                flag = true;
+                //近くのplayer_allyの方向を取得し続ける
+                nearObj = SerchTag(gameObject, "Player_ally");
+                //一番近くのplayer_allyの方向を向く
+                transform.LookAt(nearObj.transform);
+
+                if (SerchTag(gameObject, "Player_ally"))
                 {
-                    Instantiate(canonball, transform.position, RB.rotation);
-                    //
+                    Debug.Log("範囲に入りました");
+                    count++;
+                    //ここで数字を変えて弾の打つ感覚の変更
+                    if (count % 10 == 0)
+                    {
+                        Instantiate(canonball, transform.position, RB.rotation);
+                        //
+                    }
                 }
             }
         }
@@ -133,13 +136,13 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);  //ゲームオブジェクトが破壊される
 
-            switch(wave)
+            switch (wave)
             {
                 case 1:
 
                     SceneManager.LoadScene("GameScene_Wave2");  // wave2シーンに移行する
 
-                break;
+                    break;
 
                 case 2:
 
@@ -165,14 +168,14 @@ public class Enemy : MonoBehaviour
 
                     break;
             }
-            
+
         }
 
     }
 
     private void OnTriggerExit(Collider other)
     {
-        flag= false;
+        flag = false;
 
         Debug.Log("範囲から出ました");
         // transformを取得

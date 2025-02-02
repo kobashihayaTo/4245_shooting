@@ -20,6 +20,8 @@ public class TowerGenerate : MonoBehaviour
     private GameObject previewTower; // 配置前のプレビュータワー
     private bool isGridVisible = true; // グリッド表示の切り替え
 
+    private SceneSwitter sceneSwitter;
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -30,6 +32,8 @@ public class TowerGenerate : MonoBehaviour
         HandlePlacementPreview();
         HandleTowerPlacement();
         ToggleGridVisibility();
+        //CanPlaceTower();
+        Debug.Log("反応はしてる");
     }
 
     // スクリーン座標をワールド座標に変換
@@ -81,8 +85,15 @@ public class TowerGenerate : MonoBehaviour
             // タワーを設置
             Instantiate(towerPrefab, worldPosition, Quaternion.identity);
             Destroy(previewTower);
-            previewTower = null;
+
+            // 新しくプレビュータワーを作成
+            previewTower = Instantiate(towerPrefab, worldPosition, Quaternion.identity);
+            previewTower.GetComponent<Collider>().enabled = false; // プレビュー用なのでコライダーを無効化
+            //previewTower = null;
         }
+
+
+
     }
 
     void ToggleGridVisibility()
@@ -115,5 +126,18 @@ public class TowerGenerate : MonoBehaviour
             Vector3 end = new Vector3(xPos, startPosition.y, startPosition.z + gridHeight * gridSize);
             Gizmos.DrawLine(start, end);
         }
+    }
+
+    bool CanPlaceTower(Vector3 position)
+    {
+        Collider[] colliders = Physics.OverlapSphere(position, gridSize * 0.4f);
+        foreach (Collider col in colliders)
+        {
+            if (col.gameObject.CompareTag("Tower")) // "Tower" タグがあるオブジェクトをチェック
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
