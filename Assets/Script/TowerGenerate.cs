@@ -87,9 +87,9 @@ public class TowerGenerate : MonoBehaviour
             Destroy(previewTower);
 
             // 新しくプレビュータワーを作成
-            previewTower = Instantiate(towerPrefab, worldPosition, Quaternion.identity);
-            previewTower.GetComponent<Collider>().enabled = false; // プレビュー用なのでコライダーを無効化
-            //previewTower = null;
+            //previewTower = Instantiate(towerPrefab, worldPosition, Quaternion.identity);
+            //previewTower.GetComponent<Collider>().enabled = false; // プレビュー用なのでコライダーを無効化
+            previewTower = null;
         }
 
 
