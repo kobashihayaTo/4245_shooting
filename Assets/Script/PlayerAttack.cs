@@ -10,7 +10,6 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         enemy = GameObject.Find("Enemy");
         transform.LookAt(enemy.transform);
     }
