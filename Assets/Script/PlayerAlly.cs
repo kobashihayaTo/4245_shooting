@@ -37,7 +37,7 @@ public class PlayerAlly : MonoBehaviour
         // Enemyタグを検索して処理を実行する
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("範囲に入った");
+            //Debug.Log("範囲に入った");
             //transform.LookAt(Enemy);
             count++;
 
@@ -45,7 +45,7 @@ public class PlayerAlly : MonoBehaviour
             if (count % 10 == 0)
             {
                 Instantiate(canonball, transform.position, Quaternion.identity);
-                Debug.Log("撃ってるよ");
+                //Debug.Log("撃ってるよ");
             }
         }
     }
@@ -54,7 +54,7 @@ public class PlayerAlly : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("範囲から出ました");
+            //Debug.Log("範囲から出ました");
         }
     }
 
@@ -63,7 +63,7 @@ public class PlayerAlly : MonoBehaviour
         // タグがEnemyBulletのオブジェクトが当たった時に{}内の処理が行われる
         if (collision.gameObject.tag == "EnemyBullet")
         {
-            Debug.Log("hit Player");// コンソールにhit Playerが表示
+            //Debug.Log("hit Player");// コンソールにhit Playerが表示
             hp--;
         }
 
