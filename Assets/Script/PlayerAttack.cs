@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0, 0, 0.02f);
+        transform.Translate(0, 0, 0.05f);
         Destroy(gameObject, 3);
     }
 }

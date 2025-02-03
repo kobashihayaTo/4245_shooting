@@ -38,11 +38,11 @@ public class PlayerAlly : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (sceneSwitter.GetterIsMode() == true)
+        if (sceneSwitter.GetterIsMode() == false)
         {
             if (other.CompareTag("Enemy"))
             {
-
+                Debug.Log("範囲に入った");
                 transform.LookAt(Enemy);
                 count++;
 
@@ -50,7 +50,7 @@ public class PlayerAlly : MonoBehaviour
                 if (count % 10 == 0)
                 {
                     Instantiate(canonball, transform.position, Quaternion.identity);
-                    //Debug.Log("範囲に入りました");
+                    Debug.Log("うってるよ");
                 }
 
             }
@@ -67,7 +67,7 @@ public class PlayerAlly : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (sceneSwitter.GetterIsMode() == true)
+        if (sceneSwitter.GetterIsMode() == false)
         {
             //タグがEnemyBulletのオブジェクトが当たった時に{}内の処理が行われる
             if (collision.gameObject.tag == "EnemyBullet")

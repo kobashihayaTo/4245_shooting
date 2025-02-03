@@ -18,6 +18,6 @@ public class EnemyAttack : MonoBehaviour
     void Update()
     {
         transform.Translate(0, 0, Speed);
-        Destroy(gameObject, 3);
+        Destroy(gameObject, 2);
     }
 }
