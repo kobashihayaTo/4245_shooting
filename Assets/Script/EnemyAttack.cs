@@ -11,7 +11,7 @@ public class EnemyAttack : MonoBehaviour
     void Start()
     {
         Player_ally = GameObject.Find("Player_ally");
-        transform.LookAt(Player_ally.transform);
+        //transform.LookAt(Player_ally.transform);
     }
 
     // Update is called once per frame
