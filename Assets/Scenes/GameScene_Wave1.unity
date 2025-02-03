@@ -4995,7 +4995,7 @@ MonoBehaviour:
   placementLayer:
     serializedVersion: 2
     m_Bits: 1
-  gridSize: 3
+  gridSize: 2.5
   gridWidth: 1
   gridHeight: 1
   gridColor: {r: 1, g: 0, b: 0, a: 1}
@@ -11409,7 +11409,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2611639654017836467, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
       propertyPath: hp
-      value: 5
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 2611639654017836467, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
       propertyPath: wave

@@ -21,7 +21,7 @@ public class PlayerAlly : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void OnDrawGizmos()
@@ -36,7 +36,7 @@ public class PlayerAlly : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Debug.Log("”ÍˆÍ‚É“ü‚Á‚½");
-            transform.LookAt(Enemy);
+            //transform.LookAt(Enemy);
             count++;
 
             // ‚±‚±‚Å”š‚ğ•Ï‚¦‚Ä’e‚Ì‘Å‚ÂŠÔŠu‚Ì•ÏX
