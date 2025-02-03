@@ -22,6 +22,8 @@ public class TowerGenerate : MonoBehaviour
 
     private SceneSwitter sceneSwitter;
 
+    public int towerCount = 0;
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -77,22 +79,25 @@ public class TowerGenerate : MonoBehaviour
 
     void HandleTowerPlacement()
     {
-        if (Input.GetMouseButtonDown(0) && previewTower != null)
+        if (towerCount > 0)
         {
-            Vector3 worldPosition = ScreenToWorldPosition(Input.mousePosition);
-            if (worldPosition == Vector3.zero) return;
+            if (Input.GetMouseButtonDown(0) && previewTower != null)
+            {
+                Vector3 worldPosition = ScreenToWorldPosition(Input.mousePosition);
+                if (worldPosition == Vector3.zero) return;
 
-            // タワーを設置
-            Instantiate(towerPrefab, worldPosition, Quaternion.identity);
-            Destroy(previewTower);
+                // タワーを設置
+                Instantiate(towerPrefab, worldPosition, Quaternion.identity);
+                Destroy(previewTower);
 
-            // 新しくプレビュータワーを作成
-            //previewTower = Instantiate(towerPrefab, worldPosition, Quaternion.identity);
-            //previewTower.GetComponent<Collider>().enabled = false; // プレビュー用なのでコライダーを無効化
-            previewTower = null;
+                // 新しくプレビュータワーを作成
+                //previewTower = Instantiate(towerPrefab, worldPosition, Quaternion.identity);
+                //previewTower.GetComponent<Collider>().enabled = false; // プレビュー用なのでコライダーを無効化
+                previewTower = null;
+
+                towerCount--;
+            }
         }
-
-
 
     }
 

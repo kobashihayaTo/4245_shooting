@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class PlayerAlly : MonoBehaviour
@@ -10,6 +11,7 @@ public class PlayerAlly : MonoBehaviour
     private int count = 0;
     private SceneSwitter sceneSwitter;
     [SerializeField] private float hp = 5;// ‘Ì—Í
+    public int wave = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +23,24 @@ public class PlayerAlly : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        switch (wave)
+        {
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+            case 5:
+
+                break;
+        }
     }
 
     private void OnDrawGizmos()
