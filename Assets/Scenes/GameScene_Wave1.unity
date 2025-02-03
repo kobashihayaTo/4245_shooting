@@ -11449,7 +11449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2611639654017836467, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
       propertyPath: moveVertical
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2611639654017836467, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
       propertyPath: sceneSwitter
