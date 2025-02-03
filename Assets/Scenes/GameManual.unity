@@ -823,7 +823,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143807745}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1902442374}
@@ -831,7 +831,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 167}
+  m_AnchoredPosition: {x: -800, y: 190}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2143807747
@@ -856,18 +856,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9585831a27311524f909046bb93bf8c0, type: 3}
-    m_FontSize: 300
+    m_FontSize: 90
     m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 1
     m_RichText: 0
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u8AAC\u660E"
+  m_Text: "\u64CD\u4F5C\u65B9\u6CD5\n\u3000\u79FB\u52D5(\u2190\u2192)\u3068\u914D\u7F6E(\u5DE6\u30AF\u30EA\u30C3\u30AF)\n\n\u30FB\u81EA\u6A5F\u3092\u64CD\u4F5C\u3059\u308B\u3068\u6575\u3082\u540C\u3058\u65B9\u5411\u306B\u52D5\u304F\u3088\uFF01\n\u30FB\u81EA\u5206\u306E\u914D\u7F6E\u3057\u305F\u5B50\u6A5F\u3067\u653B\u6483\u3067\u5012\u305D\u3046!\n\u30FB\u6575\u3092\u5012\u3057\u305F\u3089\u6B21\u306EWAVE\u306B\u3059\u3059\u3080\u3088"
 --- !u!222 &2143807748
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -875,4 +875,4 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143807745}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
