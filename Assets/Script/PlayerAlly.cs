@@ -38,22 +38,19 @@ public class PlayerAlly : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (sceneSwitter.GetterIsMode() == false)
+        if (other.CompareTag("Enemy"))
         {
-            if (other.CompareTag("Enemy"))
+            Debug.Log("範囲に入った");
+            transform.LookAt(Enemy);
+            count++;
+
+            //ここで数字を変えて弾の打つ感覚の変更
+            if (count % 10 == 0)
             {
-                Debug.Log("範囲に入った");
-                transform.LookAt(Enemy);
-                count++;
-
-                //ここで数字を変えて弾の打つ感覚の変更
-                if (count % 10 == 0)
-                {
-                    Instantiate(canonball, transform.position, Quaternion.identity);
-                    Debug.Log("うってるよ");
-                }
-
+                Instantiate(canonball, transform.position, Quaternion.identity);
+                Debug.Log("うってるよ");
             }
+
         }
     }
 
@@ -67,20 +64,17 @@ public class PlayerAlly : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (sceneSwitter.GetterIsMode() == false)
+        //タグがEnemyBulletのオブジェクトが当たった時に{}内の処理が行われる
+        if (collision.gameObject.tag == "EnemyBullet")
         {
-            //タグがEnemyBulletのオブジェクトが当たった時に{}内の処理が行われる
-            if (collision.gameObject.tag == "EnemyBullet")
-            {
-                Debug.Log("hit Player");  //コンソールにhit Playerが表示
-                hp -= 1;
-            }
+            Debug.Log("hit Player");  //コンソールにhit Playerが表示
+            hp -= 1;
+        }
 
-            //体力が0以下になった時{}内の処理が行われる
-            if (hp <= 0)
-            {
-                Destroy(gameObject);  //ゲームオブジェクトが破壊される
-            }
+        //体力が0以下になった時{}内の処理が行われる
+        if (hp <= 0)
+        {
+            Destroy(gameObject);  //ゲームオブジェクトが破壊される
         }
     }
 }
