@@ -112,7 +112,7 @@ MonoBehaviour:
   attackRange: 3
   Enemy: {fileID: 2732077704493537582, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
   canonball: {fileID: 3220862640229770038, guid: e86ad363fa1621f4b8599da62590611f, type: 3}
-  hp: 22
+  hp: 3
 --- !u!54 &3468150218776037780
 Rigidbody:
   m_ObjectHideFlags: 0

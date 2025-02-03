@@ -34,6 +34,8 @@ public class Enemy : MonoBehaviour
     //移動の範囲するために必要
     [SerializeField] private Transform enemy_pos;
 
+    [SerializeField]private int interval = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -109,8 +111,8 @@ public class Enemy : MonoBehaviour
                 {
                     Debug.Log("範囲に入りました");
                     count++;
-                    //ここで数字を変えて弾の打つ感覚の変更
-                    if (count % 10 == 0)
+                    //ここで数字を変えて弾の打つ間隔の変更
+                    if (count % interval == 0)
                     {
                         Instantiate(canonball, transform.position, RB.rotation);
                         //

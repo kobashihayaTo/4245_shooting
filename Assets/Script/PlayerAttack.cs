@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     private GameObject enemy;
+    public float Speed = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0, 0, 0.05f);
-        Destroy(gameObject, 3);
+        transform.Translate(0, 0, Speed);
+        Destroy(gameObject, 2);
     }
 }
