@@ -145,4 +145,10 @@ public class TowerGenerate : MonoBehaviour
         }
         return true;
     }
+
+    //TowerCount‚ÌƒQƒbƒ^[
+    public int GetterTowerCount()
+    {
+        return towerCount;
+    }
 }
