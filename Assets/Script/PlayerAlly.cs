@@ -4,25 +4,18 @@ using UnityEngine;
 
 public class PlayerAlly : MonoBehaviour
 {
-
     public float attackRange = 0.0f;
-
     public Transform Enemy;
     public GameObject canonball;
     private int count = 0;
     private SceneSwitter sceneSwitter;
-
     //‘Ì—Í
-    [SerializeField]
-    private float hp = 5;  //‘Ì—Í
-
+    [SerializeField] private float hp = 5;  //‘Ì—Í
 
     // Start is called before the first frame update
     void Start()
     {
-        //circleCollider2D.radius = attackRange;
         GetComponent<SphereCollider>().radius = attackRange;
-
     }
 
     // Update is called once per frame
@@ -50,7 +43,6 @@ public class PlayerAlly : MonoBehaviour
                 Instantiate(canonball, transform.position, Quaternion.identity);
                 Debug.Log("‚¤‚Á‚Ä‚é‚æ");
             }
-
         }
     }
 

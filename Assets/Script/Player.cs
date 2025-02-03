@@ -24,34 +24,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         rb.velocity = Vector3.zero;
-
-        if (player_pos.position.x >= -4.0f)
-        {
-            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-            {
-
-                Debug.Log("左　反応はしてる");
-                //rb.velocity = new Vector3(-10.0f, 0.0f, 0.0f); 
-                transform.position -= speed * transform.right * Time.deltaTime;
-
-            }
-        }
-        if (player_pos.position.x <= 4.0f)
-        {
-
-            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-            {
-
-                Debug.Log("右　反応はしてる");
-               //rb.velocity = new Vector3(10.0f, 0.0f, 0.0f); 
-               transform.position += speed * transform.right * Time.deltaTime;
-
-            }
-            //rb.velocity.x = 3.0f;
-        }
-
-        Debug.Log("velo:" + player_pos.position.x);
-
         // アニメーション用フラグ管理
         if (scene.IsMode == true)
         {
@@ -61,6 +33,24 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("IsActive", false);
         }
+
+        if (player_pos.position.x >= -4.0f)
+        {
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+            {
+                Debug.Log("左　反応はしてる");
+                transform.position -= speed * transform.right * Time.deltaTime;
+            }
+        }
+        if (player_pos.position.x <= 4.0f)
+        {
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+            {
+                Debug.Log("右　反応はしてる");
+                transform.position += speed * transform.right * Time.deltaTime;
+            }
+        }
+        Debug.Log("velo:" + player_pos.position.x);
     }
 
     private void OnTriggerEnter(Collider collision)
