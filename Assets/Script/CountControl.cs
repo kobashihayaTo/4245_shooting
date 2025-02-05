@@ -5,20 +5,26 @@ using UnityEngine.UI;
 
 public class CountControl : MonoBehaviour
 {
-    // UI Text指定用
-    public Text TextFrame;
     // 表示する変数
-    private int frame;
+    [SerializeField] private TowerGenerate towerGene;
+    [SerializeField] private Text remainingCountText; // UIのTextコンポーネント
+
     // Start is called before the first frame update
     void Start()
     {
-        frame = 0;
+        UpdateRemainingCount(); // 初期表示を更新
     }
 
     // Update is called once per frame
     void Update()
     {
-        TextFrame.text = string.Format("{0:00000} frame", frame);
-        frame++;
+        UpdateRemainingCount(); // 常に残り数を更新
+    }
+
+    // 残り配置数を更新するメソッド
+    public void UpdateRemainingCount()
+    {
+        int remainingCount = towerGene.GetterTowerCount();
+        remainingCountText.text = "残り配置数: " + remainingCount.ToString();
     }
 }
