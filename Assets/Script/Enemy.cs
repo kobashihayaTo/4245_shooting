@@ -97,17 +97,20 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+
         if (sceneSwitter.IsMode == true)
         {
-            if (other.CompareTag("Player_ally"))
+
+            if (other.CompareTag("Tower"))
             {
+                Debug.Log("’Ê‚Á‚Ä‚é‚ª‚È");
                 flag = true;
                 //‹ß‚­‚Ìplayer_ally‚Ì•ûŒü‚ðŽæ“¾‚µ‘±‚¯‚é
-                nearObj = SerchTag(gameObject, "Player_ally");
+                nearObj = SerchTag(gameObject, "Tower");
                 //ˆê”Ô‹ß‚­‚Ìplayer_ally‚Ì•ûŒü‚ðŒü‚­
                 transform.LookAt(nearObj.transform);
 
-                if (SerchTag(gameObject, "Player_ally"))
+                if (SerchTag(gameObject, "Tower"))
                 {
                     Debug.Log("”ÍˆÍ‚É“ü‚è‚Ü‚µ‚½");
                     count++;
