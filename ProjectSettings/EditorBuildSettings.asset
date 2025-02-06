@@ -12,20 +12,20 @@ EditorBuildSettings:
     path: Assets/Scenes/GameManual.unity
     guid: e50d66064ac51484f9ae8e1be44a6817
   - enabled: 1
-    path: Assets/Scenes/GameScene_Wave2.unity
-    guid: cf71eb21ec557e048b724848bbc6fe8b
+    path: Assets/Scenes/GameScene_Wave1.unity
+    guid: efdbbf13d6f998449ab05297482408c6
   - enabled: 1
     path: Assets/Scenes/GameScene_Wave2.unity
-    guid: fb522dba7fbe8944c97b5a776989baee
+    guid: 6de2c8bee45a47e469a60dc65ad3bde7
   - enabled: 1
     path: Assets/Scenes/GameScene_Wave3.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    guid: 960f2bf6a59ba20418e62205e6b9dfb8
   - enabled: 1
     path: Assets/Scenes/GameScene_Wave4.unity
-    guid: 18cbc72bd761189439b4f961d07d0f4c
+    guid: 95e097d89411d894e9278a1d50d045c2
   - enabled: 1
     path: Assets/Scenes/GameScene_Wave5.unity
-    guid: 2ff28172056536b42bf332f2db56c1dd
+    guid: d315082b7f76d8d48b2e054fae408efb
   - enabled: 1
     path: Assets/Scenes/GameClear.unity
     guid: e80e4bfd4ce0e224e9a3ddd8b1a7a6a8
