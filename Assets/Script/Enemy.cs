@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 public class Enemy : MonoBehaviour
 {
     private Rigidbody RB;
-    //敵の横速度
+    // 敵の横速度
     public float moveHorizontal = 0f;
-    //敵の縦速度
+    // 敵の縦速度
     public float moveVertical = 0f;
-    //範囲に入ったら
+    // 範囲に入ったら
     public float attackRange = 0.0f;
-    //
+    // ウェーブ数
     public int wave = 0;
 
     //一番近いオブジェクト
@@ -20,20 +20,14 @@ public class Enemy : MonoBehaviour
     private GameObject playerObj;
     public GameObject canonball;
     private int count = 0;
-    //
     Transform playerTr; // プレイヤーのTransform
 
-    //体力
-    [SerializeField]
-    private float hp = 5;  //体力
-
+    [SerializeField] private float hp = 5; // 体力
     private bool flag = false;
-    //
+    // シーンの切り替え用
     [SerializeField] private SceneSwitter sceneSwitter;
-
-    //移動の範囲するために必要
+    // 移動の範囲するために必要
     [SerializeField] private Transform enemy_pos;
-
     [SerializeField]private int interval = 10;
 
     // Start is called before the first frame update
