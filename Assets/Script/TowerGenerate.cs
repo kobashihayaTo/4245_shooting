@@ -33,9 +33,8 @@ public class TowerGenerate : MonoBehaviour
     {
         HandlePlacementPreview();
         HandleTowerPlacement();
+        HandleTowerRemoval();  // 削除処理を追加
         ToggleGridVisibility();
-        //CanPlaceTower();
-        Debug.Log("反応はしてる");
     }
 
     // スクリーン座標をワールド座標に変換
@@ -75,8 +74,31 @@ public class TowerGenerate : MonoBehaviour
         {
             previewTower.transform.position = worldPosition; // プレビュータワーを位置更新
         }
+
+        // 設置できるかどうかをチェックし、プレビュータワーの色を変更
+        if (CanPlaceTower(worldPosition))
+        {
+            previewTower.GetComponent<Renderer>().material.color = Color.green;  // 設置可能なら緑
+        }
+        else
+        {
+            previewTower.GetComponent<Renderer>().material.color = Color.red;    // 設置不可なら赤
+        }
     }
 
+    void ChangePreviewTowerColor(Color color)
+    {
+        if (previewTower != null)
+        {
+            Renderer renderer = previewTower.GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                renderer.material.color = color;  // プレビュータワーの色を変更
+            }
+        }
+    }
+
+    // 左クリックでタワーを設置
     void HandleTowerPlacement()
     {
         if (towerCount > 0)
@@ -86,20 +108,53 @@ public class TowerGenerate : MonoBehaviour
                 Vector3 worldPosition = ScreenToWorldPosition(Input.mousePosition);
                 if (worldPosition == Vector3.zero) return;
 
-                // タワーを設置
-                Instantiate(towerPrefab, worldPosition, Quaternion.identity);
-                Destroy(previewTower);
+                // 位置にタワーがすでに存在するかチェック
+                if (CanPlaceTower(worldPosition))
+                {
+                    // タワーを設置
+                    Instantiate(towerPrefab, worldPosition, Quaternion.identity);
+                    Destroy(previewTower);
 
-                // 新しくプレビュータワーを作成
-                //previewTower = Instantiate(towerPrefab, worldPosition, Quaternion.identity);
-                //previewTower.GetComponent<Collider>().enabled = false; // プレビュー用なのでコライダーを無効化
-                previewTower = null;
+                    // 新しくプレビュータワーを作成
+                    previewTower = null;
 
-                towerCount--;
+                    towerCount--;
+                }
+                else
+                {
+                    // タワーが設置できない場合は何もしない（警告メッセージを表示するなど）
+                    Debug.Log("この位置にはタワーを設置できません！");
+                }
             }
         }
-
     }
+
+    // 右クリックでタワーを削除
+    void HandleTowerRemoval()
+    {
+        if (Input.GetMouseButtonDown(1))  // 右クリック
+        {
+            Vector3 worldPosition = ScreenToWorldPosition(Input.mousePosition);
+            if (worldPosition == Vector3.zero) return;
+
+            // マウス位置に対してRaycastを使って削除対象のタワーAを見つける
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, placementLayer))
+            {
+                // ヒットしたオブジェクトが"Tower"タグを持っているかチェック
+                if (hit.collider.gameObject.CompareTag("Tower"))
+                {
+                    GameObject targetTower = hit.collider.gameObject; // クリックしたタワーAをターゲット
+                    Destroy(targetTower);  // タワーAを削除
+                    towerCount++;  // タワーのカウントを増やす
+                }
+            }
+        }
+    }
+
+
 
     void ToggleGridVisibility()
     {
@@ -133,18 +188,21 @@ public class TowerGenerate : MonoBehaviour
         }
     }
 
+    // 位置にタワーが設置できるかを確認
     bool CanPlaceTower(Vector3 position)
     {
-        Collider[] colliders = Physics.OverlapSphere(position, gridSize * 0.4f);
+        // 範囲を狭めるために0.1fに変更
+        Collider[] colliders = Physics.OverlapSphere(position, gridSize * 0.1f);
         foreach (Collider col in colliders)
         {
-            if (col.gameObject.CompareTag("Tower")) // "Tower" タグがあるオブジェクトをチェック
+            if (col.gameObject.CompareTag("Tower")) // "Tower" タグがあるオブジェクトがすでにある場合
             {
-                return false;
+                return false;  // すでにタワーが存在するので設置できない
             }
         }
-        return true;
+        return true;  // タワーがない場合は設置可能
     }
+
 
     //TowerCountのゲッター
     public int GetterTowerCount()

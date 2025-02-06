@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3468150218776037780}
   m_Layer: 0
   m_Name: Player_ally
-  m_TagString: Player_ally
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,6 +113,7 @@ MonoBehaviour:
   Enemy: {fileID: 2732077704493537582, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
   canonball: {fileID: 3220862640229770038, guid: e86ad363fa1621f4b8599da62590611f, type: 3}
   hp: 3
+  wave: 0
 --- !u!54 &3468150218776037780
 Rigidbody:
   m_ObjectHideFlags: 0
