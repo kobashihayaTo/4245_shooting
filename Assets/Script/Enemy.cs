@@ -2,20 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     private Rigidbody RB;
-    // 敵の横速度
-    public float moveHorizontal = 0f;
-    // 敵の縦速度
-    public float moveVertical = 0f;
-    // 範囲に入ったら
-    public float attackRange = 0.0f;
-    // ウェーブ数
-    public int wave = 0;
+    public float moveHorizontal = 0f;   // 敵の横速度
+    public float moveVertical = 0f;     // 敵の縦速度
+    public float attackRange = 0.0f;    // 範囲に入ったら
+    public int wave = 0;                // ウェーブ数
 
-    //一番近いオブジェクト
+    // 一番近いオブジェクト
     private GameObject nearObj;
     private GameObject playerObj;
     public GameObject canonball;
@@ -23,12 +20,14 @@ public class Enemy : MonoBehaviour
     Transform playerTr; // プレイヤーのTransform
 
     [SerializeField] private float hp = 5; // 体力
+    [SerializeField] private float maxHp = 5; // 最大HPをインスペクターで設定可能に
     private bool flag = false;
     // シーンの切り替え用
     [SerializeField] private SceneSwitter sceneSwitter;
     // 移動の範囲するために必要
     [SerializeField] private Transform enemy_pos;
-    [SerializeField]private int interval = 10;
+    [SerializeField] private int interval = 10;
+    [SerializeField] private Image healthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -38,21 +37,22 @@ public class Enemy : MonoBehaviour
 
         // プレイヤーのTransformを取得（プレイヤーのタグをPlayerに設定必要）
         playerTr = GameObject.FindGameObjectWithTag("Player").transform;
+
+        // HPゲージの初期化
+        UpdateHealthBar();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //// プレイヤーとの距離が0.1f未満になったらそれ以上実行しない
-        //if (Vector3.Distance(transform.position, playerTr.position) < 0.1f)
-        //    return;
         Move();
     }
+
     private void Move()
     {
         if (sceneSwitter.GetterIsMode() == true)
         {
-            //自動で迫ってくる
+            // 自動で迫ってくる
             RB.velocity = transform.forward * moveVertical;
             if (enemy_pos.position.x >= -4.0f)
             {
@@ -71,17 +71,20 @@ public class Enemy : MonoBehaviour
 
             if (flag == false)
             {
-                //// プレイヤーに向けて進む
-                //transform.position = Vector3.MoveTowards(
-                //    transform.position,
-                //    new Vector3(playerTr.position.x, playerTr.position.z),
-                //    moveVertical * Time.deltaTime);
                 playerObj = SerchTag(gameObject, "Player");
-
                 transform.LookAt(playerObj.transform);
             }
         }
+    }
 
+    // HPゲージの更新メソッドを追加
+    private void UpdateHealthBar()
+    {
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = hp / maxHp; // 最大HPを使用
+            Debug.Log("HPゲージ更新: " + healthBar.fillAmount); // デバッグメッセージ
+        }
     }
 
     private void OnDrawGizmos()
@@ -91,28 +94,25 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-
         if (sceneSwitter.IsMode == true)
         {
-
             if (other.CompareTag("Tower"))
             {
                 Debug.Log("通ってるがな");
                 flag = true;
-                //近くのplayer_allyの方向を取得し続ける
+                // 近くのplayer_allyの方向を取得し続ける
                 nearObj = SerchTag(gameObject, "Tower");
-                //一番近くのplayer_allyの方向を向く
+                // 一番近くのplayer_allyの方向を向く
                 transform.LookAt(nearObj.transform);
 
                 if (SerchTag(gameObject, "Tower"))
                 {
                     Debug.Log("範囲に入りました");
                     count++;
-                    //ここで数字を変えて弾の打つ間隔の変更
+                    // ここで数字を変えて弾の打つ間隔の変更
                     if (count % interval == 0)
                     {
                         Instantiate(canonball, transform.position, RB.rotation);
-                        //
                     }
                 }
             }
@@ -121,13 +121,13 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-
-        //タグがEnemyBulletのオブジェクトが当たった時に{ }
-        //内の処理が行われる
+        // タグがEnemyBulletのオブジェクトが当たった時に{ }
+        // 内の処理が行われる
         if (collision.gameObject.tag == "PlayerBullet")
         {
             Debug.Log("hit Player");  //コンソールにhit Playerが表示
             hp -= 1;
+            UpdateHealthBar(); // HPゲージを更新
         }
 
         //体力が0以下になった時{}内の処理が行われる
@@ -138,38 +138,22 @@ public class Enemy : MonoBehaviour
             switch (wave)
             {
                 case 1:
-
                     SceneManager.LoadScene("GameScene_Wave2");  // wave2シーンに移行する
-
                     break;
-
                 case 2:
-
                     SceneManager.LoadScene("GameScene_Wave3");  // wave3シーン画面に移行する
-
                     break;
-
                 case 3:
-
                     SceneManager.LoadScene("GameScene_Wave4");  // wave4シーン画面に移行する
-
                     break;
-
                 case 4:
-
                     SceneManager.LoadScene("GameScene_Wave5");  // wave5シーン画面に移行する
-
                     break;
-
                 case 5:
-
                     SceneManager.LoadScene("GameClear");  // ゲームクリア画面に移行する
-
                     break;
             }
-
         }
-
     }
 
     private void OnTriggerExit(Collider other)
@@ -181,21 +165,21 @@ public class Enemy : MonoBehaviour
         Transform myTransform = this.transform;
         // ワールド座標を基準に、回転を取得
         Vector3 worldAngle = myTransform.eulerAngles;
-        worldAngle.x = 0.0f; // ワールド座標を基準に、x軸を軸にした回転を10度に変更
-        worldAngle.y = 180.0f; // ワールド座標を基準に、y軸を軸にした回転を10度に変更
-        worldAngle.z = 0.0f; // ワールド座標を基準に、z軸を軸にした回転を10度に変更
-        myTransform.eulerAngles = worldAngle; // 回転角度を設定
+        worldAngle.x = 0.0f;                    // ワールド座標を基準に、x軸を軸にした回転を10度に変更
+        worldAngle.y = 180.0f;                  // ワールド座標を基準に、y軸を軸にした回転を10度に変更
+        worldAngle.z = 0.0f;                    // ワールド座標を基準に、z軸を軸にした回転を10度に変更
+        myTransform.eulerAngles = worldAngle;   // 回転角度を設定
     }
 
-    //指定されたタグの中で最も近いものを取得
+    // 指定されたタグの中で最も近いものを取得
     GameObject SerchTag(GameObject nowObj, string tagName)
     {
-        float tmpDis = 0;           //距離用一時変数
-        float nearDis = 0;          //最も近いオブジェクトの距離
-        //string nearObjName = "";    //オブジェクト名称
-        GameObject targetObj = null; //オブジェクト
+        float tmpDis = 0;               // 距離用一時変数
+        float nearDis = 0;              // 最も近いオブジェクトの距離
+        //string nearObjName = "";      //オブジェクト名称
+        GameObject targetObj = null;    //オブジェクト
 
-        //タグ指定されたオブジェクトを配列で取得する
+        // タグ指定されたオブジェクトを配列で取得する
         foreach (GameObject obs in GameObject.FindGameObjectsWithTag(tagName))
         {
             //自身と取得したオブジェクトの距離を取得
