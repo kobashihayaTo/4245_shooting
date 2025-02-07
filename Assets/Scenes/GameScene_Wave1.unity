@@ -10317,6 +10317,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 963194227}
     - target: {fileID: 1612484157816166388, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
+      propertyPath: sceneSwitter
+      value: 
+      objectReference: {fileID: 165553735}
+    - target: {fileID: 1612484157816166388, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
       propertyPath: placementLayer.m_Bits
       value: 1
       objectReference: {fileID: 0}
@@ -11733,7 +11737,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2611639654017836467, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
       propertyPath: hp
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2611639654017836467, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
       propertyPath: wave

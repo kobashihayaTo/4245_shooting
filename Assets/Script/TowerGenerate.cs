@@ -20,6 +20,7 @@ public class TowerGenerate : MonoBehaviour
     private GameObject previewTower; // 配置前のプレビュータワー
     private bool isGridVisible = true; // グリッド表示の切り替え
 
+    [SerializeField]
     private SceneSwitter sceneSwitter;
 
     public int towerCount = 0;
@@ -37,9 +38,13 @@ public class TowerGenerate : MonoBehaviour
 
     void Update()
     {
-        HandlePlacementPreview();
-        HandleTowerPlacement();
-        HandleTowerRemoval();  // 削除処理を追加
+        if (sceneSwitter.IsMode==false)
+        {
+            HandlePlacementPreview();
+            HandleTowerPlacement();
+            HandleTowerRemoval();  // 削除処理を追加
+        }
+
         ToggleGridVisibility();
     }
 

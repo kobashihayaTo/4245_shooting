@@ -5317,9 +5317,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1612484157816166388, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 963194227}
+    - target: {fileID: 1612484157816166388, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
       propertyPath: towerCount
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1612484157816166388, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
+      propertyPath: sceneSwitter
+      value: 
+      objectReference: {fileID: 165553735}
     - target: {fileID: 1612484157816166389, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
       propertyPath: m_RootOrder
       value: 7
