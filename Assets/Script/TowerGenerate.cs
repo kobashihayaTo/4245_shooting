@@ -23,7 +23,7 @@ public class TowerGenerate : MonoBehaviour
     [SerializeField]
     private SceneSwitter sceneSwitter;
 
-    public int towerCount = 0;
+    public int towerCount = 0;  //配置できるタワーの数
 
     void Start()
     {
@@ -38,9 +38,14 @@ public class TowerGenerate : MonoBehaviour
 
     void Update()
     {
-        if (sceneSwitter.IsMode==false)
+        if (sceneSwitter.GetterIsMode() == false)
         {
-            HandlePlacementPreview();
+
+            //設置モードだったら
+            if (towerCount > 0)
+            {
+                HandlePlacementPreview();
+            }
             HandleTowerPlacement();
             HandleTowerRemoval();  // 削除処理を追加
         }
