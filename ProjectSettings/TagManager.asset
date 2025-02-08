@@ -9,6 +9,7 @@ TagManager:
   - Player_ally
   - PlayerBullet
   - EnemyBullet
+  - Tower
   layers:
   - Default
   - TransparentFX
@@ -43,6 +44,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackGround
+    uniqueID: 2615718917
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
