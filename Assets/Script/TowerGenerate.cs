@@ -30,6 +30,7 @@ public class TowerGenerate : MonoBehaviour
         mainCamera = Camera.main;
         Debug.Log(mainCamera == null ? "Main Camera is null" : "Main Camera is set.");
 
+        Debug.Log("TowerPrefab: " + (towerPrefab != null ? "OK" : "null"));
         if (towerPrefab == null)
         {
             Debug.LogError("Tower prefab is not assigned!");
