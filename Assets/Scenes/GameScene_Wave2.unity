@@ -2350,7 +2350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318366ee555167a409429242251628f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerGene: {fileID: 1063754863}
+  towerGene: {fileID: 1053822904}
   remainingCountText: {fileID: 766395921}
 --- !u!4 &425677589
 Transform:
@@ -5992,17 +5992,61 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040742466}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1063754863 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1612484157816166388, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
-  m_PrefabInstance: {fileID: 1849242808}
+--- !u!1 &1053822903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1053822905}
+  - component: {fileID: 1053822904}
+  m_Layer: 0
+  m_Name: TowerGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1053822904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053822903}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54dbf2750d92cb44383efb8a218727ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 1710328349787116247, guid: c63d3c975cbd3b94fb098d4c894607de, type: 3}
+  placementLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  gridSize: 2.5
+  gridWidth: 1
+  gridHeight: 1
+  gridColor: {r: 1, g: 0, b: 0, a: 1}
+  gridOrigin: {x: -4, y: 0.1, z: -9}
+  mainCamera: {fileID: 963194227}
+  sceneSwitter: {fileID: 165553735}
+  towerCount: 7
+--- !u!4 &1053822905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053822903}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1093485914
 GameObject:
   m_ObjectHideFlags: 0
@@ -10693,71 +10737,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847874611}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1849242808
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1612484157816166388, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 963194227}
-    - target: {fileID: 1612484157816166388, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
-      propertyPath: sceneSwitter
-      value: 
-      objectReference: {fileID: 165553735}
-    - target: {fileID: 1612484157816166389, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1612484157816166389, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1612484157816166389, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1612484157816166389, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1612484157816166389, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1612484157816166389, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1612484157816166389, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1612484157816166389, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1612484157816166389, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1612484157816166389, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1612484157816166389, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1612484157816166395, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
-      propertyPath: m_Name
-      value: TowerGenerator
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: de15267c948a3124fb305d098ff7fb56, type: 3}
 --- !u!1 &1885866742
 GameObject:
   m_ObjectHideFlags: 0
@@ -12085,7 +12064,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2611639654017836467, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
       propertyPath: hp
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2611639654017836467, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
       propertyPath: wave
@@ -12093,7 +12072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2611639654017836467, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
       propertyPath: maxHp
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2611639654017836467, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
       propertyPath: canonball

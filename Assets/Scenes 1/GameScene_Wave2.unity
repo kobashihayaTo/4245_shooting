@@ -6032,7 +6032,7 @@ MonoBehaviour:
   gridOrigin: {x: -4, y: 0.1, z: -9}
   mainCamera: {fileID: 963194227}
   sceneSwitter: {fileID: 165553735}
-  towerCount: 7
+  towerCount: 6
 --- !u!4 &1053822905
 Transform:
   m_ObjectHideFlags: 0
@@ -7440,7 +7440,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Wave 4/5
+  m_Text: Wave 2/5
 --- !u!222 &1352345631
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12068,7 +12068,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2611639654017836467, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
       propertyPath: wave
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2611639654017836467, guid: 1ea49a36b8fd5184e97abc981fd41d35, type: 3}
       propertyPath: maxHp
